@@ -9,13 +9,29 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight - 100)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const checkTheme = () => {
+      // Find which section the navbar overlaps with (60px from top)
+      const navY = 60
+      const sections = document.querySelectorAll('section[data-theme]')
+      let dark = false
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect()
+        if (rect.top <= navY && rect.bottom >= navY) {
+          dark = section.getAttribute('data-theme') === 'dark'
+        }
+      })
+
+      setIsDark(dark)
+    }
+
+    window.addEventListener('scroll', checkTheme, { passive: true })
+    checkTheme()
+    return () => window.removeEventListener('scroll', checkTheme)
   }, [])
 
   return (
@@ -27,14 +43,16 @@ export default function Navbar() {
     >
       <div
         className={`flex items-center justify-between w-full max-w-4xl px-5 h-12 rounded-full transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/10 backdrop-blur-xl shadow-lg shadow-black/5 border border-white/20'
-            : 'bg-white/10 backdrop-blur-md border border-white/15'
+          isDark
+            ? 'bg-white/10 backdrop-blur-md border border-white/15'
+            : 'bg-black/5 backdrop-blur-xl border border-black/8'
         }`}
       >
         <a
           href="#"
-          className={`font-semibold text-sm tracking-tight hover:opacity-80 transition-opacity ${scrolled ? 'text-primary' : 'text-white'}`}
+          className={`font-semibold text-sm tracking-tight hover:opacity-80 transition-colors duration-300 ${
+            isDark ? 'text-white' : 'text-text'
+          }`}
         >
           Matthéo Naegellen
         </a>
@@ -44,42 +62,43 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors duration-200 ${scrolled ? 'text-text/70 hover:text-primary' : 'text-white/70 hover:text-white'}`}
+              className={`text-sm font-medium transition-colors duration-300 ${
+                isDark ? 'text-white/70 hover:text-white' : 'text-text-muted hover:text-text'
+              }`}
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
-            className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-200 ${scrolled ? 'bg-primary text-white hover:bg-primary-light' : 'bg-white text-primary hover:bg-white/90'}`}
+            className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 ${
+              isDark
+                ? 'bg-white text-[#19046e] hover:bg-white/90'
+                : 'bg-[#19046e] text-white hover:bg-[#19046e]/90'
+            }`}
           >
             Me contacter
           </a>
         </div>
 
         <button
-          className="md:hidden flex flex-col gap-1 p-2 rounded-full hover:bg-white/10 transition-colors"
+          className={`md:hidden flex flex-col gap-1 p-2 rounded-full transition-colors ${
+            isDark ? 'hover:bg-white/10' : 'hover:bg-black/5'
+          }`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
         >
-          <span
-            className={`w-4 h-0.5 transition-all duration-300 ${
-              mobileOpen ? 'rotate-45 translate-y-1.5' : ''
-            }`}
-            style={{ background: scrolled ? '#1a1a2e' : '#fff' }}
-          />
-          <span
-            className={`w-4 h-0.5 transition-all duration-300 ${
-              mobileOpen ? 'opacity-0' : ''
-            }`}
-            style={{ background: scrolled ? '#1a1a2e' : '#fff' }}
-          />
-          <span
-            className={`w-4 h-0.5 transition-all duration-300 ${
-              mobileOpen ? '-rotate-45 -translate-y-1.5' : ''
-            }`}
-            style={{ background: scrolled ? '#1a1a2e' : '#fff' }}
-          />
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className={`w-4 h-0.5 transition-all duration-300 ${
+                i === 0 && mobileOpen ? 'rotate-45 translate-y-1.5' : ''
+              } ${i === 1 && mobileOpen ? 'opacity-0' : ''} ${
+                i === 2 && mobileOpen ? '-rotate-45 -translate-y-1.5' : ''
+              }`}
+              style={{ background: isDark ? '#fff' : '#1a1a2e' }}
+            />
+          ))}
         </button>
       </div>
 

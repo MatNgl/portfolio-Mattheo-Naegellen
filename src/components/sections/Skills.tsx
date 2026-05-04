@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import AnimatedSection from '../shared/AnimatedSection'
-import SectionTitle from '../shared/SectionTitle'
+import Grainient from '../ui/Grainient'
 import { skills } from '../../data/portfolio'
 
 const iconMap: Record<string, string> = {
@@ -13,73 +13,112 @@ const iconMap: Record<string, string> = {
   NestJS: 'nestjs',
   PHP: 'php',
   'Node.js': 'nodedotjs',
-  'REST API': '',
   PostgreSQL: 'postgresql',
   MongoDB: 'mongodb',
   Redis: 'redis',
   Docker: 'docker',
   GitHub: 'github',
-  VPS: '',
   Linux: 'linux',
   Figma: 'figma',
   Git: 'git',
   Postman: 'postman',
-  Ajax: '',
 }
 
-function SkillIcon({ name }: { name: string }) {
+const allSkills = Object.values(skills).flat()
+const row1 = allSkills.filter((_, i) => i % 2 === 0)
+const row2 = allSkills.filter((_, i) => i % 2 === 1)
+
+// Wider range of offsets for more organic cloud feel
+const offsets = [0, -22, 14, -8, 24, -18, 6, -28, 18, -10, 20, -14, 10, -24, 4, -20, 16, -6, 22, -12]
+
+function SkillChip({ name, index }: { name: string; index: number }) {
   const slug = iconMap[name]
-  if (!slug) return null
+  const yOffset = offsets[index % offsets.length]
+
   return (
-    <img
-      src={`https://cdn.simpleicons.org/${slug}`}
-      alt={name}
-      className="w-4 h-4 opacity-70"
-      draggable={false}
-    />
+    <div
+      className="flex-shrink-0 inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-white/90 font-medium text-sm hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default select-none"
+      style={{ transform: `translateY(${yOffset}px)` }}
+    >
+      {slug && (
+        <img
+          src={`https://cdn.simpleicons.org/${slug}/ffffff`}
+          alt={name}
+          className="w-5 h-5"
+          draggable={false}
+        />
+      )}
+      {name}
+    </div>
+  )
+}
+
+function Marquee({ items, direction = 'left', speed = 12 }: { items: string[]; direction?: 'left' | 'right'; speed?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    let pos = direction === 'left' ? 0 : -(el.scrollWidth / 2)
+    let rafId: number
+
+    const animate = () => {
+      if (direction === 'left') {
+        pos -= speed / 60
+        if (pos <= -(el.scrollWidth / 2)) pos = 0
+      } else {
+        pos += speed / 60
+        if (pos >= 0) pos = -(el.scrollWidth / 2)
+      }
+      el.style.transform = `translateX(${pos}px)`
+      rafId = requestAnimationFrame(animate)
+    }
+
+    rafId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafId)
+  }, [direction, speed])
+
+  const doubled = [...items, ...items]
+
+  return (
+    <div className="overflow-hidden py-10">
+      <div ref={ref} className="flex gap-5 w-max will-change-transform">
+        {doubled.map((skill, i) => (
+          <SkillChip key={`${skill}-${i}`} name={skill} index={i} />
+        ))}
+      </div>
+    </div>
   )
 }
 
 export default function Skills() {
-  const categories = Object.entries(skills) as [string, string[]][]
-
   return (
-    <section id="skills" className="py-28 bg-[#fafafa]">
-      <div className="max-w-6xl mx-auto px-6">
-        <SectionTitle
-          label="Stack"
-          title="Ce que je maitrise"
-          centered
+    <section id="skills" className="relative py-14 overflow-hidden">
+      {/* Same Grainient as the hero */}
+      <div className="absolute inset-0">
+        <Grainient
+          color1="#ffd19f"
+          color2="#19046e"
+          color3="#19046e"
+          timeSpeed={1.9}
+          grainAmount={0.04}
+          warpStrength={0.6}
+          zoom={2}
         />
+      </div>
 
-        <div className="space-y-8 max-w-3xl mx-auto">
-          {categories.map(([cat, items], i) => (
-            <AnimatedSection key={cat} delay={i * 0.09}>
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-                <span className="w-36 text-xs font-bold text-primary uppercase tracking-wider pt-2.5 flex-shrink-0">
-                  {cat}
-                </span>
-                <div className="flex flex-wrap gap-2.5">
-                  {items.map((skill, j) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.06 + j * 0.04, duration: 0.3 }}
-                      className="glass inline-flex items-center gap-2 px-4 py-2.5 rounded-[14px] text-sm font-medium text-text hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default"
-                    >
-                      <SkillIcon name={skill} />
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
-              {i < categories.length - 1 && (
-                <div className="mt-7 h-px bg-primary/6" />
-              )}
-            </AnimatedSection>
-          ))}
+      <div className="relative z-10">
+        <AnimatedSection className="text-center mb-14">
+          <span className="text-xs font-bold text-white/50 uppercase tracking-widest">Stack</span>
+          <h2 className="mt-2 text-3xl lg:text-4xl font-bold text-white leading-tight">
+            Ce que je maîtrise
+          </h2>
+        </AnimatedSection>
+
+        <div className="space-y-0">
+          <Marquee items={row1} direction="left" speed={12} />
+          <Marquee items={row2} direction="right" speed={10} />
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section data-theme="dark" className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <Grainient
           color1="#ffd19f"
