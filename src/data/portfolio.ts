@@ -2,50 +2,77 @@ export const personalInfo = {
   name: 'Matthéo Naegellen',
   firstName: 'Matthéo',
   lastName: 'Naegellen',
-  title: 'Développeur Fullstack',
+  title: 'Développeur Full-Stack',
   school: 'EFREI Paris',
   degree: 'Master Développeur Fullstack & Management',
-  tagline: 'Je crée des outils qui simplifient le quotidien.',
   bio: 'Alternant depuis 3 ans à La Banque Postale, je conçois des applications métier de A à Z. Recueil des besoins, maquettes, développement, mise en prod. En parallèle, je crée des projets perso pour résoudre des problèmes concrets.',
   email: 'mattheo.naegellen@gmail.com',
   github: 'https://github.com/MatNgl/',
+  githubUsername: 'MatNgl',
   linkedin: 'https://www.linkedin.com/in/mattheo-naegellen/',
   availableFrom: 'Septembre 2026',
 }
 
-export const experience = {
-  company: 'La Banque Postale',
-  role: 'Développeur Fullstack',
-  period: 'Septembre 2023 - Septembre 2026',
-  duration: '3 ans',
-  location: 'Paris',
-  missions: [
-    {
-      title: 'MyData - Importation de données',
-      description:
-        "Interface web pour importer des données vers des bases internes. Gestion du projet en autonomie : cadrage des besoins avec les MOA, développement, mise en production.",
-      tags: ['PHP', 'PostgreSQL', 'JavaScript', 'Ajax'],
-    },
-    {
-      title: 'Dashboard et filtrage',
-      description:
-        'Tableaux de bord avec filtrage avancé et export pour les équipes métier. Utilisés au quotidien pour piloter les activités de traitement.',
-      tags: ['PHP', 'Ajax', 'PostgreSQL', 'JavaScript'],
-    },
-    {
-      title: 'Gestion de listing clients',
-      description:
-        'Outil de répartition des dossiers entre agents. Interface de validation des contacts clients et de gestion des charges de travail.',
-      tags: ['JavaScript', 'PostgreSQL', 'Docker', 'PHP'],
-    },
-    {
-      title: 'Formulaires dossiers anomalies',
-      description:
-        "Formulaires de création de dossiers pour traiter les anomalies clients. Saisie des corrections à apporter et renvoi vers les services concernés.",
-      tags: ['PHP', 'JavaScript', 'PostgreSQL'],
-    },
-  ],
-}
+export const stats = [
+  { value: 3, suffix: '+', label: "Ans d'expérience" },
+  { value: 12, suffix: '', label: 'Projets complétés' },
+]
+
+export const experiences = [
+  {
+    type: 'stage' as const,
+    company: 'La Banque Postale',
+    role: 'Stagiaire Développeur',
+    period: 'Décembre 2021 - Janvier 2022',
+    duration: '2 mois',
+    location: 'Paris',
+    description: "Découverte de l'environnement professionnel et initiation aux outils internes de développement.",
+  },
+  {
+    type: 'stage' as const,
+    company: 'La Banque Postale',
+    role: 'Stagiaire Développeur',
+    period: 'Mai 2023 - Juillet 2023',
+    duration: '3 mois',
+    location: 'Paris',
+    description: "Participation au développement d'applications métier et montée en compétences sur les technologies de l'équipe.",
+  },
+  {
+    type: 'alternance' as const,
+    company: 'La Banque Postale',
+    role: 'Développeur Fullstack',
+    period: 'Septembre 2023 - Septembre 2026',
+    duration: '3 ans',
+    location: 'Paris',
+    description: "Conception et développement d'applications métier en autonomie : recueil des besoins, maquettes, développement, mise en production.",
+    missions: [
+      {
+        title: 'MyData - Importation de données',
+        description:
+          "Interface web pour importer des données vers des bases internes. Gestion du projet en autonomie : cadrage des besoins avec les MOA, développement, mise en production.",
+        tags: ['PHP', 'PostgreSQL', 'JavaScript', 'Ajax'],
+      },
+      {
+        title: 'Dashboard et filtrage',
+        description:
+          'Tableaux de bord avec filtrage avancé et export pour les équipes métier. Utilisés au quotidien pour piloter les activités de traitement.',
+        tags: ['PHP', 'Ajax', 'PostgreSQL', 'JavaScript'],
+      },
+      {
+        title: 'Gestion de listing clients',
+        description:
+          'Outil de répartition des dossiers entre agents. Interface de validation des contacts clients et de gestion des charges de travail.',
+        tags: ['JavaScript', 'PostgreSQL', 'Docker', 'PHP'],
+      },
+      {
+        title: 'Formulaires dossiers anomalies',
+        description:
+          "Formulaires de création de dossiers pour traiter les anomalies clients. Saisie des corrections à apporter et renvoi vers les services concernés.",
+        tags: ['PHP', 'JavaScript', 'PostgreSQL'],
+      },
+    ],
+  },
+]
 
 export const projects = [
   {
@@ -71,7 +98,7 @@ export const projects = [
       'Scraping de Vinted et Cardmarket avec filtres avancés : mots-clés, état, marque, couleur, langue. Notifications Telegram ou mobile. Toutes les 15 secondes.',
     image: '/capture_signalscrap.png',
     logo: '/logo_signalscrap_white.png',
-    url: undefined,
+    url: 'https://www.signalscrap.com',
     github: 'https://github.com/MatNgl/',
     tags: ['React', 'NestJS', 'PostgreSQL', 'Redis', 'Docker', 'Chromium'],
     color: '#fff5ec',
@@ -107,8 +134,6 @@ export const projects = [
     status: 'wip',
   },
 ]
-
-
 
 export const skills = {
   Frontend: ['React', 'Angular', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'],

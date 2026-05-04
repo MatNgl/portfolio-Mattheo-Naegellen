@@ -1,6 +1,6 @@
 import AnimatedSection from '../shared/AnimatedSection'
-import Grainient from '../ui/Grainient'
-import { experience } from '../../data/portfolio'
+import BigTitle from '../shared/BigTitle'
+import { experiences } from '../../data/portfolio'
 
 const iconMap: Record<string, string> = {
   PHP: 'php',
@@ -14,9 +14,9 @@ function TechIcon({ name }: { name: string }) {
   if (!slug) return null
   return (
     <img
-      src={`https://cdn.simpleicons.org/${slug}/ffffff`}
+      src={`https://cdn.simpleicons.org/${slug}/10B981`}
       alt={name}
-      className="w-4 h-4 opacity-80"
+      className="w-3.5 h-3.5 opacity-80"
       draggable={false}
     />
   )
@@ -24,79 +24,88 @@ function TechIcon({ name }: { name: string }) {
 
 export default function Experience() {
   return (
-    <section id="experience" data-theme="dark" className="relative py-24 overflow-hidden">
-      {/* Grainient background */}
-      <div className="absolute inset-0">
-        <Grainient
-          color1="#ffd19f"
-          color2="#19046e"
-          color3="#19046e"
-          timeSpeed={1.9}
-          grainAmount={0.04}
-          warpStrength={0.6}
-          zoom={2}
-        />
+    <section id="experience" className="py-16">
+      <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-5 mb-10">
+        <BigTitle line1="Parcours" line2="Professionnel" className="mb-0 flex-1" />
+        <AnimatedSection delay={0.1} className="flex-shrink-0 mb-1">
+          <div className="flex items-center gap-2 pb-1">
+            <div className="h-8 w-8 rounded-[10px] bg-white/[0.05] border border-white/[0.08] flex items-center justify-center overflow-hidden p-1">
+              <img
+                src="/Logo_La_Banque_postale_2022.svg.png"
+                alt="La Banque Postale"
+                className="w-full h-full object-contain brightness-0 invert opacity-60"
+                draggable={false}
+              />
+            </div>
+            <span className="text-xs text-white/30 font-medium">La Banque Postale</span>
+          </div>
+        </AnimatedSection>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        <div className="flex items-center gap-5 mb-14">
-          <AnimatedSection>
-            <div className="flex items-center gap-5">
-              <div className="h-12 w-12 rounded-[14px] bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden p-1.5">
-                <img
-                  src="/Logo_La_Banque_postale_2022.svg.png"
-                  alt="La Banque Postale"
-                  className="w-full h-full object-contain brightness-0 invert"
-                  draggable={false}
-                />
-              </div>
-              <div>
-                <span className="text-xs font-bold text-white/50 uppercase tracking-widest">
-                  Alternance
-                </span>
-                <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight">
-                  {experience.company}
-                </h2>
-                <p className="mt-1 text-base text-white/60">
-                  {experience.role} — {experience.period}
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
+      <div className="relative">
+        <div className="absolute left-[0.85rem] top-0 bottom-0 w-px bg-white/[0.07] hidden md:block" />
 
-        <div className="relative">
-          {/* Vertical connecting line */}
-          <div className="absolute left-[0.95rem] top-0 bottom-0 w-px bg-white/15 hidden md:block" />
+        <div className="space-y-4">
+          {experiences.map((exp, i) => (
+            <AnimatedSection key={i} delay={i * 0.08} className="relative flex gap-6 md:gap-8">
+              <div className="hidden md:flex flex-shrink-0 items-start pt-6 self-stretch">
+                <div className="w-[1.7rem] flex items-center justify-center">
+                  <div
+                    className={`w-2.5 h-2.5 rounded-full border-2 z-10 ${
+                      exp.type === 'alternance'
+                        ? 'bg-primary border-primary/40'
+                        : 'bg-white/40 border-white/15'
+                    }`}
+                  />
+                </div>
+              </div>
 
-          <div className="space-y-5">
-            {experience.missions.map((mission, i) => (
-              <AnimatedSection key={i} delay={i * 0.1} className="relative flex gap-6 md:gap-10">
-                {/* Centered dot */}
-                <div className="hidden md:flex flex-shrink-0 items-center self-stretch">
-                  <div className="w-[1.9rem] flex items-center justify-center">
-                    <div className="w-3.5 h-3.5 rounded-full bg-white border-[3px] border-white/30 shadow-sm z-10" />
-                  </div>
+              <div className="flex-1 glass rounded-[18px] p-5 hover:bg-white/[0.05] transition-all duration-300">
+                <div className="flex items-center gap-2 mb-1">
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-widest ${
+                      exp.type === 'alternance' ? 'text-primary' : 'text-white/30'
+                    }`}
+                  >
+                    {exp.type === 'alternance' ? 'Alternance' : 'Stage'}
+                  </span>
+                  <span className="text-[10px] text-white/20">-</span>
+                  <span className="text-[10px] text-white/25">{exp.duration}</span>
                 </div>
 
-                <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-[20px] p-6 hover:bg-white/15 hover:-translate-y-0.5 transition-all duration-300">
-                  <h3 className="font-bold text-white text-base">{mission.title}</h3>
-                  <p className="text-white/70 mt-2 leading-relaxed text-sm">{mission.description}</p>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {mission.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 text-white/90 font-medium"
+                <h3 className="font-bold text-white text-base">{exp.role}</h3>
+                <p className="text-white/35 text-xs mt-0.5">{exp.period}</p>
+                <p className="text-white/50 mt-3 leading-relaxed text-sm">{exp.description}</p>
+
+                {exp.missions && (
+                  <div className="mt-4 space-y-3">
+                    {exp.missions.map((mission, mi) => (
+                      <div
+                        key={mi}
+                        className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.05]"
                       >
-                        <TechIcon name={tag} />
-                        {tag}
-                      </span>
+                        <h4 className="font-semibold text-white/75 text-sm">{mission.title}</h4>
+                        <p className="text-white/40 text-xs mt-1 leading-relaxed">
+                          {mission.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1.5 mt-2">
+                          {mission.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="inline-flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-primary/8 border border-primary/12 text-primary/75 font-medium"
+                            >
+                              <TechIcon name={tag} />
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+                )}
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </div>
     </section>

@@ -12,11 +12,11 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    'bg-primary text-white hover:bg-primary-light shadow-lg shadow-primary/20 hover:shadow-primary/30',
+    'bg-primary text-white hover:bg-primary/80 shadow-lg shadow-primary/20 hover:shadow-primary/30',
   outline:
-    'glass border-primary/15 text-primary hover:bg-primary/8',
+    'glass border-primary/15 text-white hover:bg-white/[0.08]',
   ghost:
-    'text-primary hover:bg-primary/6',
+    'text-white/70 hover:bg-white/[0.06] hover:text-white',
 }
 
 export default function MagneticButton({
