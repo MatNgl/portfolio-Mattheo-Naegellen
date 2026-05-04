@@ -16,7 +16,6 @@ export default function GitHubContributions({
           blockSize={12}
           blockMargin={3}
           fontSize={14}
-          hideColorLegend
           labels={{
             totalCount: '{{count}} contributions l\'année dernière',
           }}
