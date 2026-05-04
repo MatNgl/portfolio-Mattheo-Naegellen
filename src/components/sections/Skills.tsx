@@ -22,7 +22,7 @@ const iconMap: Record<string, string> = {
   Git: 'git',
   Postman: 'postman',
   'REST API': 'openapiinitiative',
-  Ajax: 'javascript',
+
   VPS: 'linux',
 }
 

@@ -50,13 +50,13 @@ export const experiences = [
         title: 'MyData - Importation de données',
         description:
           "Interface web pour importer des données vers des bases internes. Gestion du projet en autonomie : cadrage des besoins avec les MOA, développement, mise en production.",
-        tags: ['PHP', 'PostgreSQL', 'JavaScript', 'Ajax'],
+        tags: ['PHP', 'PostgreSQL', 'JavaScript'],
       },
       {
         title: 'Dashboard et filtrage',
         description:
           'Tableaux de bord avec filtrage avancé et export pour les équipes métier. Utilisés au quotidien pour piloter les activités de traitement.',
-        tags: ['PHP', 'Ajax', 'PostgreSQL', 'JavaScript'],
+        tags: ['PHP', 'PostgreSQL', 'JavaScript'],
       },
       {
         title: 'Gestion de listing clients',
@@ -140,5 +140,5 @@ export const skills = {
   Backend: ['NestJS', 'PHP', 'Node.js', 'REST API'],
   'Base de données': ['PostgreSQL', 'MongoDB', 'Redis'],
   DevOps: ['Docker', 'GitHub', 'VPS', 'Linux'],
-  Outils: ['Figma', 'Git', 'Postman', 'Ajax'],
+  Outils: ['Figma', 'Git', 'Postman'],
 }

@@ -14,7 +14,7 @@ function TechIcon({ name }: { name: string }) {
   if (!slug) return null
   return (
     <img
-      src={`https://cdn.simpleicons.org/${slug}/10B981`}
+      src={`https://cdn.simpleicons.org/${slug}/ffffff`}
       alt={name}
       className="w-3.5 h-3.5 opacity-80"
       draggable={false}
@@ -92,7 +92,7 @@ export default function Experience() {
                           {mission.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="inline-flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-primary/8 border border-primary/12 text-primary/75 font-medium"
+                              className="inline-flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white font-medium"
                             >
                               <TechIcon name={tag} />
                               {tag}
