@@ -3,6 +3,7 @@ export const personalInfo = {
   firstName: 'Matthéo',
   lastName: 'Naegellen',
   title: 'Développeur Full-Stack',
+  tagline: 'Création d\'expériences web fluides, modernes et performantes.',
   school: 'EFREI Paris',
   degree: 'Master Développeur Fullstack & Management',
   bio: 'Alternant depuis 3 ans à La Banque Postale, je conçois des applications métier de A à Z. Recueil des besoins, maquettes, développement, mise en prod. En parallèle, je crée des projets perso pour résoudre des problèmes concrets.',

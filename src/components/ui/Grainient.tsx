@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-// @ts-expect-error ogl types
 import { Renderer, Program, Mesh, Triangle } from 'ogl'
 import './Grainient.css'
 
