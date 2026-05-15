@@ -12,6 +12,8 @@ export const personalInfo = {
   githubUsername: 'MatNgl',
   linkedin: 'https://www.linkedin.com/in/mattheo-naegellen/',
   availableFrom: 'Septembre 2026',
+  location: 'Paris · Île-de-France',
+  openTo: 'CDI Développeur Full-Stack',
 }
 
 export const stats = [
@@ -189,8 +191,8 @@ export const education = [
   },
   {
     degree: 'BTS SIO',
-    school: '',
-    period: '2022 - 2024',
+    school: 'Lycée Saint-Aspais',
+    period: '2021 - 2023',
     duration: '2 ans',
     alternance: false,
     description: "Fondamentaux de l'informatique : algorithmique, bases de données, développement web et réseaux. Deux stages de 7 semaines en entreprise.",

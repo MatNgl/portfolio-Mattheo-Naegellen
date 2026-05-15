@@ -10,7 +10,7 @@ export default function Contact() {
 
       <AnimatedSection delay={0.1}>
         <p className="text-sm text-white/35 leading-relaxed max-w-lg -mt-4 mb-8">
-          CDI à partir de {personalInfo.availableFrom} - n'hésitez pas.
+          Disponible en CDI à partir de {personalInfo.availableFrom} · {personalInfo.location}
         </p>
       </AnimatedSection>
 

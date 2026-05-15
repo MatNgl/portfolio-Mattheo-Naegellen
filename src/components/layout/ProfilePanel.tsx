@@ -47,9 +47,18 @@ export default function ProfilePanel() {
       </motion.div>
 
       {/* Function / Title */}
-      <motion.p {...fadeUp(0.2)} className="text-[14px] xl:text-[15px] text-slate-500 font-medium leading-relaxed px-2 mb-8">
+      <motion.p {...fadeUp(0.2)} className="text-[14px] xl:text-[15px] text-slate-500 font-medium leading-relaxed px-2 mb-4">
         {personalInfo.title}
       </motion.p>
+
+      {/* Availability badge */}
+      <motion.div {...fadeUp(0.23)} className="flex flex-col items-center gap-2 mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/25">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse flex-shrink-0" />
+          <span className="text-[11px] font-bold text-primary tracking-wide">CDI · Disponible sept. 2026</span>
+        </div>
+        <p className="text-[11px] text-slate-400 font-medium">{personalInfo.location}</p>
+      </motion.div>
 
       {/* Social links */}
       <motion.div {...fadeUp(0.3)} className="flex items-center justify-center gap-6 w-full pb-2">
