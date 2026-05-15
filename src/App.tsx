@@ -36,9 +36,9 @@ function App() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 pt-24 pb-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
 
-          {/* Left: Sticky Profile Panel */}
-          <aside className="w-full lg:w-[300px] xl:w-[320px] flex-shrink-0 mb-10 lg:mb-0">
-            <div className="lg:sticky lg:top-28">
+          {/* Left: Sticky Profile Panel — desktop only */}
+          <aside className="hidden lg:block lg:w-[300px] xl:w-[320px] flex-shrink-0">
+            <div className="sticky top-28">
               <ProfilePanel />
             </div>
           </aside>

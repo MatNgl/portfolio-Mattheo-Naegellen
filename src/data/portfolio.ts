@@ -20,13 +20,71 @@ export const stats = [
 
 export const experiences = [
   {
-    type: 'stage' as const,
+    type: 'alternance' as const,
     company: 'La Banque Postale',
-    role: 'Stagiaire Développeur',
-    period: 'Décembre 2021 - Janvier 2022',
-    duration: '2 mois',
+    role: 'Développeur Fullstack',
+    period: 'Septembre 2023 - Septembre 2026',
+    duration: '3 ans',
     location: 'Paris',
-    description: "Découverte de l'environnement professionnel et initiation aux outils internes de développement.",
+    description: "De la compréhension du besoin à la mise en production, en totale autonomie. Chaque projet suit le même cycle : rencontre avec les MOA, étude de faisabilité, rédaction du cahier des charges et des règles métier, développement, gestion des branches GitLab, planification, mise en recette, puis mise en production avec retours utilisateurs.",
+    missions: [
+      {
+        title: 'MyData — Importation de données',
+        description:
+          "Interface web permettant aux équipes d'importer des fichiers de données vers les bases internes. Projet géré en totale autonomie de bout en bout.",
+        highlights: [
+          'Cadrage du besoin et rédaction du cahier des charges avec les MOA',
+          "Conception et développement de l'interface d'import (validation, mapping, erreurs)",
+          'Création et gestion du schéma de base de données PostgreSQL',
+          'Gestion des branches GitLab et du planning de livraison',
+          'Mise en recette, corrections, puis déploiement en production',
+        ],
+        tags: ['PHP', 'PostgreSQL', 'JavaScript', 'Ajax'],
+      },
+      {
+        title: 'Dashboards & Filtrage avancé',
+        description:
+          "Plusieurs tableaux de bord avec filtrage avancé pour piloter les activités de traitement au quotidien. Navigation en vue macro puis micro.",
+        highlights: [
+          'Vue macro → micro : ensemble des centres, puis services, puis équipes, puis agents',
+          'Filtres multi-critères : périodes, centres, équipes, statuts',
+          'Export des données filtres au format tableur',
+          "Collaboration avec les équipes métier pour affiner l'ergonomie",
+          'Déploiement progressif avec retours terrain intégrés',
+        ],
+        tags: ['PHP', 'Ajax', 'PostgreSQL', 'JavaScript'],
+      },
+      {
+        title: 'Gestion de listing clients',
+        description:
+          "Outil complet de gestion et de répartition des dossiers clients entre agents, avec import de fichiers et gestion intelligente des charges de travail.",
+        highlights: [
+          'Rencontre MOA, étude du besoin, rédaction des spécifications fonctionnelles',
+          'Interface de validation et qualification des contacts clients',
+          'Répartition intelligente des lots de dossiers entre agents',
+          'Gestion des charges de travail avec équilibrage configurable',
+          "Import de fichiers en base de données pour alimenter les listes clients",
+          'Mise en production avec accompagnement et retours utilisateurs',
+        ],
+        tags: ['JavaScript', 'PostgreSQL', 'Docker', 'PHP'],
+      },
+      {
+        title: 'Formulaires dossiers anomalies',
+        description:
+          "Application complète de traitement des anomalies clients : du formulaire de saisie jusqu'à l'interface d'administration, en passant par la liste et le détail des dossiers.",
+        highlights: [
+          'Étude de faisabilité et rencontre avec les MOA',
+          'Rédaction du cahier des charges, des règles métier et des spécifications',
+          'Gestion du planning, priorisation des développements et des besoins',
+          'Gestion des branches GitLab tout au long du projet',
+          'Formulaire de saisie des anomalies avec règles de validation dynamiques',
+          'Vue liste et détail des dossiers pour le suivi des traitements',
+          "Interface d'administration permettant de paramétrer dynamiquement les contenus du formulaire",
+          'Mise en recette, retours MOA, puis mise en production',
+        ],
+        tags: ['PHP', 'JavaScript', 'PostgreSQL', 'Ajax'],
+      },
+    ],
   },
   {
     type: 'stage' as const,
@@ -35,42 +93,16 @@ export const experiences = [
     period: 'Mai 2023 - Juillet 2023',
     duration: '3 mois',
     location: 'Paris',
-    description: "Participation au développement d'applications métier et montée en compétences sur les technologies de l'équipe.",
+    description: "Participation active au développement d'applications métier. Montée en compétences sur la stack technique de l'équipe et premiers contacts directs avec les MOA.",
   },
   {
-    type: 'alternance' as const,
+    type: 'stage' as const,
     company: 'La Banque Postale',
-    role: 'Développeur Fullstack',
-    period: 'Septembre 2023 - Septembre 2026',
-    duration: '3 ans',
+    role: 'Stagiaire Développeur',
+    period: 'Décembre 2021 - Janvier 2022',
+    duration: '2 mois',
     location: 'Paris',
-    description: "Conception et développement d'applications métier en autonomie : recueil des besoins, maquettes, développement, mise en production.",
-    missions: [
-      {
-        title: 'MyData - Importation de données',
-        description:
-          "Interface web pour importer des données vers des bases internes. Gestion du projet en autonomie : cadrage des besoins avec les MOA, développement, mise en production.",
-        tags: ['PHP', 'PostgreSQL', 'JavaScript'],
-      },
-      {
-        title: 'Dashboard et filtrage',
-        description:
-          'Tableaux de bord avec filtrage avancé et export pour les équipes métier. Utilisés au quotidien pour piloter les activités de traitement.',
-        tags: ['PHP', 'PostgreSQL', 'JavaScript'],
-      },
-      {
-        title: 'Gestion de listing clients',
-        description:
-          'Outil de répartition des dossiers entre agents. Interface de validation des contacts clients et de gestion des charges de travail.',
-        tags: ['JavaScript', 'PostgreSQL', 'Docker', 'PHP'],
-      },
-      {
-        title: 'Formulaires dossiers anomalies',
-        description:
-          "Formulaires de création de dossiers pour traiter les anomalies clients. Saisie des corrections à apporter et renvoi vers les services concernés.",
-        tags: ['PHP', 'JavaScript', 'PostgreSQL'],
-      },
-    ],
+    description: "Découverte de l'environnement professionnel et des outils internes. Premiers développements sur des applications métier existantes.",
   },
 ]
 
@@ -85,7 +117,7 @@ export const projects = [
     logo: '/logo-pokefolio.png',
     url: 'https://www.pokefolio.xyz/login',
     github: 'https://github.com/MatNgl/',
-    tags: ['React', 'NestJS', 'MongoDB', 'API Pokemon'],
+    tags: ['React', 'NestJS', 'MongoDB', 'API Pokémon'],
     color: '#eef6ee',
     accent: '#2d7a2d',
     status: 'live',
@@ -139,6 +171,6 @@ export const skills = {
   Frontend: ['React', 'Angular', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'],
   Backend: ['NestJS', 'PHP', 'Node.js', 'REST API'],
   'Base de données': ['PostgreSQL', 'MongoDB', 'Redis'],
-  DevOps: ['Docker', 'GitHub', 'VPS', 'Linux'],
+  DevOps: ['Docker', 'GitLab', 'VPS', 'Linux'],
   Outils: ['Figma', 'Git', 'Postman'],
 }

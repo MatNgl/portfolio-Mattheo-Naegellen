@@ -18,7 +18,7 @@ export default function Hero() {
           {...fadeUp(0.05)}
           className="inline-block text-[11px] font-bold text-white/35 uppercase tracking-[0.2em] mb-5"
         >
-          {personalInfo.school} - {personalInfo.degree}
+          {personalInfo.school} — {personalInfo.degree}
         </motion.span>
 
         <motion.h1
@@ -52,13 +52,14 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* CardSwap container */}
+      {/* CardSwap — desktop only (lg+) */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="hidden lg:block"
       >
-        <div className="relative w-full h-[380px] lg:h-[440px] mt-10 lg:mt-0">
+        <div className="relative w-full h-[440px]">
           <CardSwap
             width={500}
             height={360}
@@ -70,7 +71,11 @@ export default function Hero() {
             easing="elastic"
           >
             {projects.map((p) => (
-              <Card key={p.id} customClass="!border-white/10">
+              <Card
+                key={p.id}
+                customClass="!border-white/10 cursor-pointer"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 <img
                   src={p.image}
                   alt={p.title}
@@ -88,6 +93,35 @@ export default function Hero() {
             ))}
           </CardSwap>
         </div>
+      </motion.div>
+
+      {/* Projects grid — tablet & mobile (< lg) */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.45 }}
+        className="lg:hidden mt-8 grid grid-cols-2 gap-3"
+      >
+        {projects.map((p) => (
+          <button
+            key={p.id}
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="relative rounded-xl overflow-hidden aspect-video border border-white/10 cursor-pointer group text-left"
+            style={{ boxShadow: '0 12px 30px -8px rgba(0,0,0,0.5)' }}
+          >
+            <img
+              src={p.image}
+              alt={p.title}
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              draggable={false}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-2.5 flex items-center gap-1.5">
+              <div className="w-0.5 h-4 rounded-full flex-shrink-0" style={{ background: p.accent }} />
+              <span className="text-white font-semibold text-xs truncate">{p.title}</span>
+            </div>
+          </button>
+        ))}
       </motion.div>
     </section>
   )
