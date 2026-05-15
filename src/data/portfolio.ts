@@ -168,6 +168,36 @@ export const projects = [
   },
 ]
 
+export const education = [
+  {
+    degree: 'Mastère Développeur Full-Stack & Management',
+    school: 'EFREI Paris',
+    period: '2024 - 2026',
+    duration: '2 ans',
+    alternance: true,
+    description: "Formation de haut niveau en développement full-stack et gestion de projet. Projets d'école en équipe sur des architectures modernes et complexes.",
+    tags: ['Rust', 'Swift', 'React', 'Angular', 'Micro Frontend', 'Microservices', 'Architecture'],
+  },
+  {
+    degree: "L3 Développeur d'Application",
+    school: 'EFREI Paris',
+    period: '2023 - 2024',
+    duration: '1 an',
+    alternance: true,
+    description: "Licence professionnelle en développement d'application. Approfondissement de l'architecture logicielle et des bonnes pratiques, en parallèle de l'alternance à La Banque Postale.",
+    tags: ['React', 'Angular', 'Node.js', 'TypeScript', 'Design Patterns', 'Architecture'],
+  },
+  {
+    degree: 'BTS SIO',
+    school: '',
+    period: '2022 - 2024',
+    duration: '2 ans',
+    alternance: false,
+    description: "Fondamentaux de l'informatique : algorithmique, bases de données, développement web et réseaux. Deux stages de 7 semaines en entreprise.",
+    tags: ['PHP', 'SQL', 'Algorithmique', 'HTML / CSS', 'Réseaux'],
+  },
+]
+
 export const skills = {
   Frontend: ['React', 'Angular', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Tailwind CSS'],
   Backend: ['NestJS', 'PHP', 'Node.js', 'REST API'],

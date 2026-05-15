@@ -3,9 +3,6 @@ import BigTitle from '../shared/BigTitle'
 import { experiences } from '../../data/portfolio'
 
 export default function Experience() {
-  // On crée une copie pour éviter de muter l'import original
-  const reversedExperiences = [...experiences].reverse()
-
   return (
     <section id="experience" className="py-16">
       <div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-5 mb-10">
@@ -30,7 +27,7 @@ export default function Experience() {
         <div className="absolute left-[0.85rem] top-0 bottom-0 w-px bg-white/[0.07] hidden md:block" />
 
         <div className="space-y-4">
-          {reversedExperiences.map((exp, i) => (
+          {experiences.map((exp, i) => (
             <AnimatedSection key={i} delay={i * 0.08} className="relative flex gap-6 md:gap-8">
               {/* Timeline dot */}
               <div className="hidden md:flex flex-shrink-0 items-start pt-6 self-stretch">

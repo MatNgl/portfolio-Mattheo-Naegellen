@@ -2,6 +2,7 @@ import Navbar from './components/layout/Navbar'
 import ProfilePanel from './components/layout/ProfilePanel'
 import Hero from './components/sections/Hero'
 import Experience from './components/sections/Experience'
+import Education from './components/sections/Education'
 import Projects from './components/sections/Projects'
 import Skills from './components/sections/Skills'
 import Contact from './components/sections/Contact'
@@ -47,6 +48,7 @@ function App() {
           <main className="flex-1 min-w-0">
             <Hero />
             <Experience />
+            <Education />
             <Skills />
             <Projects />
             <Contact />
